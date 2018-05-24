@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #scroll-images img{
+            display: block;
+            position: relative;
+            top:0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="scroll-images">
+        <img src="image/jcase_item_00.jpg">
+        <img src="image/jcase_item_01.jpg" alt="">
+        <img src="image/jcase_item_02.jpg" alt="">
+        <img src="image/jcase_item_03.jpg" alt="">
+                <img src="image/jcase_item_04.jpg" alt="">
+                <img src="image/jcase_item_05.jpg" alt="">
+                <img src="image/jcase_item_06.jpg" alt="">
+                <img src="image/jcase_item_07.jpg" alt="">
+               
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+    <script>
+        var index =7;
+        var z_index=999;
+        function job1(){
+            $($("#scroll-images img")[index]).fadeOut(function(){
+                z_index=z_index-1;
+                $(this).css({zIndex:z_index});
+                $(this).show();
+                index=index-1;
+                if(index<0){
+                    index=7;
+                }
+            })
+        }
+        $(document).ready(function(){
+            var $image=$("#scroll-images img");
+            for(var i=0;i<$image.length;i++){
+                $($image[i]).css({top:-i*480+'px',zIndex:999});
+            }
+            setInterval(job1,1000);
+        })
+    </script>
+
+    
+</body>
+</html>

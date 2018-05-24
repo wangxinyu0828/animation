@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title> 
+     <style>
+        #scroll-images img{
+            display: block;
+            position: relative;
+            top:0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="scroll-images" style="background-color:#888;height:480px;width:480px;position:relative;
+    left:300px;overflow:hidden;">
+            <img src="image/jcase_item_00.jpg">
+            <img src="image/jcase_item_01.jpg">
+            <img src="image/jcase_item_02.jpg">
+            <img src="image/jcase_item_03.jpg">
+            <img src="image/jcase_item_04.jpg">
+            <img src="image/jcase_item_05.jpg">
+            <img src="image/jcase_item_06.jpg">
+            <img src="image/jcase_item_07.jpg">
+            
+           
+            
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+        <script>
+            var index =7;
+            var z_index=999;
+            function job1(){
+               // if(index-1<0){
+                 //   index_1=11;
+               // }else{
+                 //   index_1=index-1
+                //}
+                $($("#scroll-images img")[(index==0)?11:index-1]).css({left:"480px"}).animate({left:0},600);
+                    $($("#scroll-images img")[index]).animate({left:"-480px"},600,function(){
+                    z_index=z_index-1;
+                    $(this).css({zIndex:z_index,left:0});
+                    
+                    index=index-1;
+                    if(index<0){
+                        index=7;
+                    }
+                })
+            }
+            $(document).ready(function(){
+                var $image=$("#scroll-images img");
+                for(var i=0;i<$image.length;i++){
+                    $($image[i]).css({top:-i*480+'px',zIndex:999});
+                }
+                setInterval(job1,1000);
+            })
+        </script>
+    
+</head>
+<body>
+    
+</body>
+</html>
